@@ -1,0 +1,17 @@
+.bord {
+	&-round {
+		border-radius: 50%;
+	}
+	&-rad-2 {
+		border-radius: $rad-2;
+	}
+	&-rad-1 {
+		border-radius: $rad-1;
+	}
+	&-bot {
+		border-bottom: 1px solid map-get($clrs, gray);
+	}
+	&-top {
+		border-top: 1px solid map-get($clrs, gray);
+	}
+}

@@ -1,0 +1,7 @@
+@mixin colors($property, $class: ".") {
+	@each $key, $clr in $clrs {
+		&#{$class}#{"" + $key} {
+			#{$property}: $clr;
+		}
+	}
+}

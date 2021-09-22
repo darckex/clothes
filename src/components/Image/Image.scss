@@ -1,0 +1,35 @@
+@import "../../assets/css/vars";
+@import "../../assets/css/mixins";
+.image {
+	overflow: hidden;
+	&.loading {
+		img {
+			opacity: 0;
+		}
+	}
+	img {
+		width: 100%;
+		height: 100%;
+		transition: ease 0.3s;
+		opacity: 1;
+	}
+
+	&.cover {
+		img {
+			object-fit: cover;
+		}
+	}
+	&.contain {
+		img {
+			object-fit: contain;
+		}
+	}
+	&.profile {
+		border-radius: 50%;
+		width: 103px;
+		height: 103px;
+		border: 3px solid white;
+	}
+
+	@include colors(background-color);
+}

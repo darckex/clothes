@@ -1,0 +1,33 @@
+@import "imports";
+
+.app {
+	font-family: "Roboto";
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	color: map-get($clrs, black-1);
+	background-color: map-get($clrs, gray-1);
+	.header {
+		flex-shrink: 0;
+	}
+	.body {
+		height: 100%;
+		flex-grow: 1;
+		overflow: auto;
+	}
+}
+.container {
+	width: 980px;
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 25px 0;
+	&.small {
+		width: 400px;
+	}
+}
+.test {
+	height: 100px;
+	width: 100px;
+	background-color: red;
+}

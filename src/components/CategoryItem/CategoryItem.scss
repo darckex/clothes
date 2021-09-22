@@ -1,0 +1,10 @@
+.category-item {
+	&:hover {
+		& > * {
+			transform: scale(1.3);
+		}
+	}
+	& > * {
+		transition: ease 0.3s;
+	}
+}

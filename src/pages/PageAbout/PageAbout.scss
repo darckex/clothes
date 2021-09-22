@@ -1,0 +1,14 @@
+@import "../../assets/css/vars";
+.page-about {
+	.holder {
+		width: 450px;
+		max-width: 100%;
+	}
+	.contact {
+		border-top: 1px solid map-get($clrs, black-1);
+		border-bottom: 1px solid map-get($clrs, black-1);
+		& > * {
+			width: 100%;
+		}
+	}
+}

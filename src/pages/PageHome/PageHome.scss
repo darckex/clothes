@@ -1,0 +1,32 @@
+@import "../../assets/css/vars";
+
+.page-home {
+	.banner {
+		position: relative;
+		.holder {
+			position: absolute;
+			background-color: rgba(white, 0.3);
+			max-width: 100%;
+			width: 549px;
+		}
+		.welcome {
+			font-size: 5.5rem;
+		}
+		.field {
+			width: 300px;
+			.input-holder .icon-holder {
+				background-color: transparent;
+			}
+		}
+	}
+	.slogan {
+		letter-spacing: 0.3rem;
+	}
+	.line {
+		width: 31px;
+		height: 1px;
+		background-color: map-get($clrs, black-1);
+		margin-right: auto;
+		margin-left: auto;
+	}
+}

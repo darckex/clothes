@@ -1,0 +1,194 @@
+.grid {
+	display: grid;
+
+	.self-end {
+		justify-self: end;
+	}
+
+	// cols
+	@for $i from 2 through 10 {
+		&.grid-#{$i} {
+			grid-template-columns: repeat($i, 1fr);
+		}
+	}
+
+	&.info {
+		grid-template-columns: auto 1fr;
+		column-gap: 10px;
+		row-gap: 5px;
+	}
+}
+
+.flex {
+	display: flex;
+
+	&.dir-col {
+		flex-direction: column;
+	}
+	&.row-reverse {
+		flex-direction: row-reverse;
+	}
+
+	&.stretch {
+		justify-content: stretch;
+	}
+	&.space-between {
+		justify-content: space-between;
+	}
+	&.space-around {
+		justify-content: space-around;
+	}
+	&.center {
+		justify-content: center;
+	}
+	&.end {
+		justify-content: flex-end;
+	}
+
+	&.al-start {
+		align-items: start;
+	}
+	&.al-center {
+		align-items: center;
+	}
+	&.al-end {
+		align-items: flex-end;
+	}
+
+	&.wrap {
+		flex-wrap: wrap;
+	}
+
+	.grow {
+		&-1 {
+			flex-grow: 1;
+		}
+		&-0 {
+			flex-grow: 0;
+		}
+	}
+	.shrink {
+		flex-shrink: 1;
+		&-0 {
+			flex-shrink: 0;
+		}
+	}
+}
+
+.gap {
+	@for $i from 0 through 11 {
+		&#{$i} {
+			gap: #{$i * 5}px !important;
+		}
+		&-x#{$i} {
+			column-gap: #{$i * 5}px !important;
+		}
+		&-y#{$i} {
+			row-gap: #{$i * 5}px !important;
+		}
+	}
+}
+
+.items {
+	&-start {
+		justify-items: start;
+	}
+	&-center {
+		justify-items: center;
+	}
+	&-end {
+		justify-items: end;
+	}
+	&-space-between {
+		justify-items: space-between;
+	}
+
+	&-al-start {
+		align-items: start;
+	}
+	&-al-center {
+		align-items: center;
+	}
+	&-al-end {
+		align-items: end;
+	}
+}
+
+.content {
+	&-start {
+		justify-content: start;
+	}
+	&-center {
+		justify-content: center;
+	}
+	&-stretch {
+		justify-content: stretch;
+	}
+	&-end {
+		justify-content: end;
+	}
+
+	&-al-start {
+		align-content: start;
+	}
+	&-al-center {
+		align-content: center;
+	}
+	&-al-end {
+		align-content: end;
+	}
+}
+
+.self {
+	&-start {
+		justify-self: start;
+	}
+
+	&-al-start {
+		align-self: start;
+	}
+}
+
+.pos {
+	&-rel {
+		position: relative;
+	}
+	&-abs {
+		position: absolute;
+	}
+
+	// position from 0 to 5 * 5
+	@for $i from 0 through 5 {
+		&-top#{$i} {
+			top: #{$i * 5}px;
+		}
+		&-right#{$i} {
+			right: #{$i * 5}px;
+		}
+		&-left#{$i} {
+			left: #{$i * 5}px;
+		}
+		&-bot#{$i} {
+			bottom: #{$i * 5}px;
+		}
+	}
+}
+
+.place-center {
+	display: grid;
+	place-items: center;
+}
+
+.overflow {
+	&-hidden {
+		overflow: hidden;
+	}
+}
+
+.w100 {
+	width: 100%;
+}
+
+.h100 {
+	height: 100%;
+}

@@ -1,0 +1,12 @@
+@import "../../assets/css/vars";
+.header {
+	.link {
+		padding: 15px;
+		color: map-get($clrs, tan);
+		transition: ease 0.3s;
+		&:hover,
+		&.active {
+			color: map-get($clrs, blue);
+		}
+	}
+}

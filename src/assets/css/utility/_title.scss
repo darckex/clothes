@@ -1,0 +1,9 @@
+.page-title {
+	font-size: 1.8rem;
+	font-weight: $fw1;
+}
+.sub-title {
+	font-size: 1.2rem;
+	font-weight: $fw1;
+	color: map-get($clrs, blue);
+}

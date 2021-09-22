@@ -1,0 +1,86 @@
+.animate {
+	&.bounce {
+		animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+		animation: 0.3s bounce;
+	}
+	.fade-in {
+		animation: 0.3s fade-in;
+	}
+	.fade-out {
+		animation: 0.3s fade-out;
+	}
+
+	.slide-in-right {
+		animation: 0.3s slide-in-right;
+	}
+	.slide-in-left {
+		animation: 0.3s slide-in-left;
+	}
+	.slide-in-bottom {
+		animation: 0.3s slide-in-bottom;
+	}
+	.slide-in-top {
+		animation: 0.3s slide-in-top;
+	}
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes fade-out {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+@keyframes slide-in-right {
+	from {
+		transform: translateX(-100%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+@keyframes slide-in-left {
+	from {
+		transform: translateX(100%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+@keyframes slide-in-bottom {
+	from {
+		transform: translateY(-100%);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+@keyframes slide-in-top {
+	from {
+		transform: translateY(100%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+@keyframes bounce {
+	0% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.1);
+	}
+	100% {
+		transform: scale(1);
+	}
+}

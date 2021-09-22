@@ -1,0 +1,7 @@
+.bg {
+	@include colors(background-color, "-");
+}
+
+.bg-blue-g {
+	background: linear-gradient(90deg, #9cd6e2, map-get($clrs, blue));
+}
