@@ -1,0 +1,14 @@
+.page-cart {
+	.aside {
+		width: 280px;
+	}
+
+	@media (max-width: 767px) {
+		.aside {
+			width: 100%;
+		}
+		.holder {
+			display: grid;
+		}
+	}
+}

@@ -46,7 +46,7 @@
 			color: black;
 
 			&::placeholder {
-				color: map-get($clrs, gray1);
+				color: map-get($clrs, blue);
 				opacity: 1;
 			}
 

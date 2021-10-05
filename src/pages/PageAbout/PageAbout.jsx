@@ -1,10 +1,19 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Button from "../../components/Button/Button"
 import Container from "../../components/Container/Container"
 import Field from "../../components/Field/Field"
+import useDimensions from "../../utility/useDimensions"
 
 import "./PageAbout.scss"
 const PageAbout = () => {
+	const [state, setState] = useState({
+		flex: "flex"
+	})
+	const { vw } = useDimensions()
+	useEffect(() => {
+		const flex = vw < 767 ? "grid" : "flex"
+		setState((state) => ({ ...state, flex }))
+	}, [vw])
 	return (
 		<Container className="page-about pad-y10 marg-top6 place-center">
 			<div className="text title-1 center">About Us</div>
@@ -30,8 +39,8 @@ const PageAbout = () => {
 					closer.
 				</div>
 			</div>
-
-			<div className="contact pad-y10 marg-y10 flex gap5 al-start space-between w100">
+			<div
+				className={`contact pad-y10 marg-y10 ${state.flex} gap5 al-start space-between w100`}>
 				<div className="grid gap6">
 					<div className="text desc center fw-1">
 						Have any questions or concerns?
@@ -41,42 +50,43 @@ const PageAbout = () => {
 					<div className="grid gap1">
 						<div className="text center fw">Call us at</div>
 						<div className="text center fw-1">
-							+9611547334/5
+							+961 81 206 647
 							<br />
-							+96170962333
+							+961 76 760 000
 							<br />
-							or send us an email to:
 							<br />
-							info@Aandhinvest.com
+							<div className="text fw center">
+								Or send us an email to
+							</div>
+							info@favorilb.com
 							<br />
 						</div>
 					</div>
 					<div className="grid gap1">
-						<div className="text fw center">Out Office</div>
+						<div className="text fw center">Our Office</div>
 						<div className="text fw-1 center">
-							Boulevard Camille Chamoun, Galerie Semaane, Galaxy
-							Complex, Block B, 3rd Floor
+							Salim salam, Facing Bank Audi, Beirut, Lebanon.
 						</div>
 					</div>
 				</div>
 				<div className="grid gap2 items-start">
 					<Field
-						className="small"
+						className={`${state.flex ? "w100" : "small"}`}
 						component="input"
 						placeholder="Name"
 					/>
 					<Field
-						className="small"
+						className={`${state.flex ? "w100" : "small"}`}
 						component="input"
 						placeholder="Email"
 					/>
 					<Field
-						className="small"
+						className={`${state.flex ? "w100" : "small"}`}
 						component="input"
 						placeholder="Subject"
 					/>
 					<Field
-						className="small"
+						className={`${state.flex ? "w100" : "small"}`}
 						component="textarea"
 						placeholder="Message"
 						rows={5}

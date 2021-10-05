@@ -1,0 +1,32 @@
+.side-menu {
+	position: fixed;
+	inset: 0;
+	z-index: 2;
+	transition: ease 0.3s;
+	opacity: 0;
+	pointer-events: none;
+	&.show {
+		opacity: 1;
+		pointer-events: all;
+
+		.menu {
+			transform: translateX(0);
+		}
+	}
+
+	.overlay {
+		position: absolute;
+		inset: 0;
+		background-color: rgba(black, 0.5);
+	}
+	.menu {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		width: 200px;
+		background-color: white;
+		transition: ease 0.3s;
+		transform: translateX(-100%);
+	}
+}
