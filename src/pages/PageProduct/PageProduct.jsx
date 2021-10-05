@@ -25,6 +25,7 @@ const PageProduct = () => {
 					src={`${server}/media/${state.image}`}
 					className="contain bg-black shrink-0"
 					height={400}
+					width={400}
 					aspectRatio="1/1"
 				/>
 				<div className="flex dir-col gap5">
