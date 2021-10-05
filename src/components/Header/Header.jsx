@@ -23,7 +23,7 @@ const Header = () => {
 		<div className="header bg-black-1">
 			<Container className="pad-y4">
 				<div className="flex space-between items-al-center">
-					<Image src={Logo} height={60} />
+					<Image src={Logo} height={60} width={"auto"} />
 					{/* <div className="logo text size5 white flex al-center">
 						LOGO
 					</div> */}
