@@ -34,7 +34,7 @@ const PageHome = () => {
 			<div className="place-center banner">
 				<Image
 					className="cover bg-black-1"
-					src={`${server}/media/4.jpg`}
+					src={`${server}/media/banner.jpg`}
 					height={600}
 					width="100%"
 				/>
