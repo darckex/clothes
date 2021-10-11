@@ -1,5 +1,10 @@
 @import "../../assets/css/vars";
 .header {
+	.image {
+		img {
+			width: 93px;
+		}
+	}
 	.link {
 		padding: 15px;
 		color: map-get($clrs, tan);

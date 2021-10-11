@@ -1,0 +1,14 @@
+.page-products {
+	.aside {
+		width: 100%;
+		max-width: 300px;
+	}
+	@media (max-width: 767px) {
+		.holder {
+			display: grid;
+			.aside {
+				max-width: unset;
+			}
+		}
+	}
+}

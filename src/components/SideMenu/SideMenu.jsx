@@ -14,7 +14,8 @@ const SideMenu = ({ show = 0, toggleMenu }) => {
 			<div className="overlay"></div>
 			<div className="menu grid content-al-start">
 				<HeaderItem to="/" text="Home" exact />
-				<HeaderItem to="/products" text="Products" />
+				<HeaderItem to="/products/1" text="Men" />
+				<HeaderItem to="/products/2" text="Women" />
 				<HeaderItem to="/about" text="About us" />
 				<div className="grid grid-2">
 					<HeaderItem2

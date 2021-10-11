@@ -1,9 +1,19 @@
 export const tempData = {
-	categories: {
+	/* categories: {
 		1: { id: 1, icon: "flaticon-dress", name: "Dresses" },
 		2: { id: 2, icon: "fas fa-mitten", name: "Gloves" },
 		3: { id: 3, icon: "fas fa-boot", name: "Shoes" },
 		4: { id: 4, icon: "fas fa-hat-cowboy-side", name: "Hats" }
+	}, */
+	categories: {
+		3: { id: 3, name: "Suits", parentId: 1, season: 1 },
+		4: { id: 4, name: "Hats", parentId: 2, season: 2 }
+	},
+	seasons: {
+		1: { id: 1, name: "Spring" },
+		2: { id: 2, name: "Summer" },
+		3: { id: 3, name: "Winter" },
+		4: { id: 4, name: "Autumn" }
 	},
 	products: {
 		1: {
@@ -23,7 +33,9 @@ export const tempData = {
 			price: 80.0,
 			colors: ["white"],
 			size: ["medium"],
-			minOrder: 5
+			minOrder: 5,
+			category: 2,
+			topCategory: 1
 		},
 		2: {
 			id: 2,
@@ -32,7 +44,9 @@ export const tempData = {
 			price: 80.0,
 			colors: ["white"],
 			size: ["medium"],
-			minOrder: 5
+			minOrder: 5,
+			category: 2,
+			topCategory: 1
 		},
 		3: {
 			id: 3,
@@ -41,7 +55,9 @@ export const tempData = {
 			price: 80.0,
 			colors: ["white"],
 			size: ["medium"],
-			minOrder: 5
+			minOrder: 5,
+			category: 2,
+			topCategory: 1
 		},
 		4: {
 			id: 4,
@@ -50,7 +66,9 @@ export const tempData = {
 			price: 80.0,
 			colors: ["white"],
 			size: ["medium"],
-			minOrder: 5
+			minOrder: 5,
+			category: 2,
+			topCategory: 2
 		},
 		5: {
 			id: 5,
@@ -59,7 +77,9 @@ export const tempData = {
 			price: 80.0,
 			colors: ["white"],
 			size: ["medium"],
-			minOrder: 5
+			minOrder: 5,
+			category: 2,
+			topCategory: 2
 		}
 	},
 	cart: [

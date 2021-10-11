@@ -5,9 +5,17 @@ import Image from "../Image/Image"
 import Tags from "../Tags/Tags"
 import "./ProductItem.scss"
 
-const ProductItem = ({ id = 0, image, name, price, colors = [] }) => {
+const ProductItem = ({
+	id = 0,
+	category,
+	topCategory,
+	image,
+	name,
+	price,
+	colors = []
+}) => {
 	return (
-		<Link to={`/products/${id}`} className="product-item">
+		<Link to={`/products/${topCategory}/${id}`} className="product-item">
 			<Image
 				src={`${server}/media/${image}`}
 				className="cover"

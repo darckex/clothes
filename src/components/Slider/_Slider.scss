@@ -7,7 +7,22 @@
 	.swiper-button-next {
 		width: 50px;
 		height: 50px;
+		border-radius: 50%;
 		background-color: rgba(black, 0.5);
 		color: white;
+
+		&:after {
+			font-size: 25px;
+		}
+	}
+	.swiper-button-prev {
+		&:after {
+			margin-right: 5px;
+		}
+	}
+	.swiper-button-next {
+		&:after {
+			margin-left: 5px;
+		}
 	}
 }

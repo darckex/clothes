@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react"
-import CategoryItem from "../../components/CategoryItem/CategoryItem"
+import { useParams } from "react-router"
+import Button from "../../components/Button/Button"
 import Container from "../../components/Container/Container"
 import Field from "../../components/Field/Field"
 import ProductItem from "../../components/ProductItem/ProductItem"
-import Slider from "../../components/Slider/Slider"
 import { tempData } from "../../temp/tempData"
 import useDimensions from "../../utility/useDimensions"
+import "./PageProducts.scss"
 
 const PageProducts = () => {
+	const { category } = useParams()
+
 	const [state, setState] = useState({
 		slidesPerView: 5,
 		grid: 4,
 		categories: tempData.categories,
 		products: tempData.products
 	})
+
 	const { vw } = useDimensions()
 
 	useEffect(() => {
@@ -35,26 +39,49 @@ const PageProducts = () => {
 
 	return (
 		<Container className="page-products pad-y5">
+			<div className="text title-1 marg-bot5">Women</div>
 			<Field component="input" placeholder="Search..." />
-			<Slider
-				className="marg-top5"
-				spaceBetween={20}
-				slidesPerView={state.slidesPerView}>
-				{Object.values(state.categories).map((v, k) => (
-					<CategoryItem key={k} icon={v.icon} text={v.name} />
-				))}
-			</Slider>
-			<div className={`grid grid-${state.grid} gap3 marg-top5`}>
-				{Object.values(state.products).map((v, k) => (
-					<ProductItem
-						key={k}
-						id={v.id}
-						image={v.image}
-						name={v.name}
-						price={v.price}
-						colors={v.colors}
-					/>
-				))}
+			<div className="holder flex gap5 items-al-start marg-top5">
+				<div className="grid gap3 grow-1 aside">
+					<div className="grid gap3 bg-white pad2">
+						<div className="text fw">Seasons</div>
+						{Object.values(tempData.seasons).map((v, k) => (
+							<Field
+								key={k}
+								component="checkbox"
+								value={v.id}
+								label={v.name}
+							/>
+						))}
+						<Button className="tan small">Submit</Button>
+					</div>
+					<div className="grid gap3 bg-white pad2">
+						<div className="text fw">Categories</div>
+						{Object.values(tempData.categories).map((v, k) => (
+							<Field
+								key={k}
+								component="checkbox"
+								value={v.id}
+								label={v.name}
+							/>
+						))}
+						<Button className="tan small">Submit</Button>
+					</div>
+				</div>
+
+				<div className={`grid grid-${state.grid} gap3`}>
+					{Object.values(state.products).map((v, k) => (
+						<ProductItem
+							key={k}
+							id={v.id}
+							image={v.image}
+							name={v.name}
+							price={v.price}
+							colors={v.colors}
+							topCategory={v.topCategory}
+						/>
+					))}
+				</div>
 			</div>
 		</Container>
 	)

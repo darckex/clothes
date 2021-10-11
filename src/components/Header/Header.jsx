@@ -24,12 +24,10 @@ const Header = () => {
 			<Container className="pad-y4">
 				<div className="flex space-between items-al-center">
 					<Image src={Logo} height={60} width={"auto"} />
-					{/* <div className="logo text size5 white flex al-center">
-						LOGO
-					</div> */}
 					<div className="flex gap2 al-center hide-m">
 						<HeaderItem to="/" text="Home" exact />
-						<HeaderItem to="/products" text="Products" />
+						<HeaderItem to="/products/1" text="Men" />
+						<HeaderItem to="/products/2" text="Women" />
 						<HeaderItem to="/about" text="About us" />
 					</div>
 					<div className="flex gap5 hide-m">

@@ -1,5 +1,11 @@
 .page-product {
+	.image {
+		width: 400px;
+	}
 	@media (max-width: 767px) {
+		.image {
+			width: 100%;
+		}
 		.holder {
 			display: grid;
 		}

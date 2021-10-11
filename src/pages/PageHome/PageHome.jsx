@@ -9,6 +9,8 @@ import useDimensions from "../../utility/useDimensions"
 import "./PageHome.scss"
 import { tempData } from "../../temp/tempData"
 import { server } from "../../settings"
+import GrayImage from "../../components/GrayImage/GrayImage"
+import { Link } from "react-router-dom"
 
 const PageHome = () => {
 	const { vw } = useDimensions()
@@ -44,15 +46,31 @@ const PageHome = () => {
 				</div>
 			</div>
 			<div className="slogan bg-tan text blue center pad2"></div>
-			<HomeSection title="CATEGORIES" subTitle="Looking for clothes">
+			<HomeSection title="CATEGORIES" subTitle="Shop for elegance">
+				<div className="flex gap5 content-center">
+					<Link to="/products/1">
+						<GrayImage image="category-men.jpg" text="SHOP MEN" />
+					</Link>
+					<Link to="/products/2">
+						<GrayImage
+							image="category-women.jpg"
+							text="SHOP WOMEN"
+						/>
+					</Link>
+				</div>
+			</HomeSection>
+			{/* <HomeSection title="CATEGORIES" subTitle="Looking for clothes">
 				<Slider spaceBetween={20} slidesPerView={state.slidesPerView}>
 					{Object.values(state.categories).map((v, k) => (
 						<CategoryItem key={k} icon={v.icon} text={v.name} />
 					))}
 				</Slider>
-			</HomeSection>
+			</HomeSection> */}
 			<HomeSection title="TRENDING" subTitle="Must have items">
-				<Slider spaceBetween={20} slidesPerView={state.slidesPerView}>
+				<Slider
+					spaceBetween={20}
+					slidesPerView={state.slidesPerView}
+					navigation>
 					{Object.values(tempData.products).map((v, k) => (
 						<ProductItem
 							key={k}
@@ -61,12 +79,16 @@ const PageHome = () => {
 							name={v.name}
 							price={v.price}
 							colors={v.colors}
+							topCategory={v.topCategory}
 						/>
 					))}
 				</Slider>
 			</HomeSection>
 			<HomeSection title="RECOMMENDED" subTitle="Picked just for you">
-				<Slider spaceBetween={20} slidesPerView={state.slidesPerView}>
+				<Slider
+					spaceBetween={20}
+					slidesPerView={state.slidesPerView}
+					navigation>
 					{Object.values(tempData.products).map((v, k) => (
 						<ProductItem
 							key={k}
@@ -75,6 +97,7 @@ const PageHome = () => {
 							name={v.name}
 							price={v.price}
 							colors={v.colors}
+							topCategory={v.topCategory}
 						/>
 					))}
 				</Slider>

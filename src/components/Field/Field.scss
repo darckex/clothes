@@ -96,7 +96,7 @@
 		input:checked ~ .label {
 			background-color: map-get($clrs, black-1);
 			color: white;
-			border: 0;
+			border-color: map-get($clrs, black-1);
 		}
 	}
 	.quant {

@@ -1,5 +1,5 @@
-import React from "react"
-import { Route, Switch } from "react-router"
+import React, { useEffect } from "react"
+import { Route, Switch, useLocation } from "react-router"
 import PageAbout from "../../pages/PageAbout/PageAbout"
 import PageProducts from "../../pages/PageProducts/PageProducts"
 import PageHome from "../../pages/PageHome/PageHome"
@@ -12,21 +12,31 @@ import PageProduct from "../../pages/PageProduct/PageProduct"
 import PageAddCart from "../../pages/PageAddCart/PageAddCart"
 
 const Routes = () => {
+	const { pathname } = useLocation()
+
+	useEffect(() => {
+		document.querySelector(".app > .body").scrollTo(0, 0)
+	}, [pathname])
+
 	return (
 		<>
 			<Switch>
 				<Route path="/" exact component={PageHome} />
-				<Route path="/products" exact component={PageProducts} />
+				<Route
+					path="/products/:category"
+					exact
+					component={PageProducts}
+				/>
+				<Route path="/products/:category/:id" component={PageProduct} />
 				<Route path="/about" component={PageAbout} />
 				<Route path="/login" component={PageLogin} />
 				<Route path="/signup" component={PageSignup} />
 				<Route path="/forgot" component={PageForgot} />
 				<Route path="/cart" component={PageCart} />
 				<Route path="/checkout" component={PageCheckout} />
-				<Route path="/products/:id" component={PageProduct} />
 			</Switch>
 			<Route
-				path="/products/:id/add-cart"
+				path="/products/:category/:id/add-cart"
 				exact
 				component={PageAddCart}
 			/>
