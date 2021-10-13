@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Container from "../Container/Container"
 import HeaderItem from "./HeaderItem"
 import HeaderItem2 from "./HeaderItem2"
@@ -8,10 +8,12 @@ import Logo from "../../assets/images/default/white-logo.svg"
 import "./Header.scss"
 import Image from "../Image/Image"
 
-const Header = () => {
+const Header = ({ user }) => {
 	const [state, setState] = useState({
-		show: 0
+		show: 0,
+		user: { id: 0 }
 	})
+
 	const toggleMenu = () => {
 		setState({
 			...state,
@@ -31,11 +33,20 @@ const Header = () => {
 						<HeaderItem to="/about" text="About us" />
 					</div>
 					<div className="flex gap5 hide-m">
-						<HeaderItem2
-							to="/login"
-							icon="fas fa-user-circle"
-							text="Log in"
-						/>
+						{!user?.id && (
+							<HeaderItem2
+								to="/login"
+								icon="fas fa-user-circle"
+								text="Login"
+							/>
+						)}
+						{!!user?.id && (
+							<HeaderItem2
+								to="/profile"
+								icon="fas fa-user-circle"
+								text={user.name}
+							/>
+						)}
 						<HeaderItem2
 							to="/cart"
 							icon="fas fa-shopping-cart"
@@ -47,7 +58,7 @@ const Header = () => {
 					</div>
 				</div>
 			</Container>
-			<SideMenu key={0} show={state.show} toggleMenu={toggleMenu} />
+			<SideMenu user={user} show={state.show} toggleMenu={toggleMenu} />
 		</div>
 	)
 }

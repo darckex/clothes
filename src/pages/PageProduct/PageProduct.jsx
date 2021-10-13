@@ -1,6 +1,7 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import { Link } from "react-router-dom"
+import { getProducts } from "../../axios/axios"
 import Button from "../../components/Button/Button"
 import Container from "../../components/Container/Container"
 import Image from "../../components/Image/Image"
@@ -9,15 +10,30 @@ import { tempData } from "../../temp/tempData"
 import "./PageProduct.scss"
 
 const PageProduct = () => {
-	const { id } = useParams()
+	const { id, category } = useParams()
+
 	const [state, setState] = useState({
 		image: tempData.products[id].image,
 		name: tempData.products[id].name,
 		description: tempData.products[id].description,
-		price: tempData.products[id].price,
-		colors: tempData.products[id].colors,
-		size: tempData.products[id].size
+		price: tempData.products[id].price
 	})
+
+	useEffect(() => {
+		getProducts({ filder: { id } }).then((r) => {
+			if (!r.products.length) return
+			const product = r.products[0]
+
+			setState((state) => ({
+				...state,
+				image: product.image,
+				name: product.name,
+				description: product.description,
+				price: product.price
+			}))
+		})
+	}, [id])
+
 	return (
 		<Container className="page-product pad-y5">
 			<div className="holder flex gap5">
@@ -34,7 +50,7 @@ const PageProduct = () => {
 					</div>
 					<div className="text black-1">{state.description}</div>
 					<div className="flex grow-1 items-al-end gap2">
-						<Link to={`/products/${id}/add-cart`}>
+						<Link to={`/products/${category}/${id}/add-cart`}>
 							<Button className="black-1 gap2">
 								<div className="icon white fas fa-cart-plus"></div>
 								Add to cart

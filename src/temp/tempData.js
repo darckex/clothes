@@ -1,10 +1,4 @@
 export const tempData = {
-	/* categories: {
-		1: { id: 1, icon: "flaticon-dress", name: "Dresses" },
-		2: { id: 2, icon: "fas fa-mitten", name: "Gloves" },
-		3: { id: 3, icon: "fas fa-boot", name: "Shoes" },
-		4: { id: 4, icon: "fas fa-hat-cowboy-side", name: "Hats" }
-	}, */
 	categories: {
 		3: { id: 3, name: "Suits", parentId: 1, season: 1 },
 		4: { id: 4, name: "Hats", parentId: 2, season: 2 }
@@ -42,7 +36,7 @@ export const tempData = {
 			image: "2.jpg",
 			name: "White floral dress",
 			price: 80.0,
-			colors: ["white"],
+			colors: ["white", "blue", "red"],
 			size: ["medium"],
 			minOrder: 5,
 			category: 2,

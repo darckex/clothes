@@ -10,6 +10,9 @@ import PageCart from "../../pages/PageCart/PageCart"
 import PageCheckout from "../../pages/PageCheckout/PageCheckout"
 import PageProduct from "../../pages/PageProduct/PageProduct"
 import PageAddCart from "../../pages/PageAddCart/PageAddCart"
+import PageProfile from "../../pages/PageProfile/PageProfile"
+import PageResetToken from "../../pages/PageResetToken/PageResetToken"
+import PageResetPassword from "../../pages/PageResetPassword/PageResetPassword"
 
 const Routes = () => {
 	const { pathname } = useLocation()
@@ -30,8 +33,11 @@ const Routes = () => {
 				<Route path="/products/:category/:id" component={PageProduct} />
 				<Route path="/about" component={PageAbout} />
 				<Route path="/login" component={PageLogin} />
+				<Route path="/profile" component={PageProfile} />
 				<Route path="/signup" component={PageSignup} />
 				<Route path="/forgot" component={PageForgot} />
+				<Route path="/reset-token" component={PageResetToken} />
+				<Route path="/reset-password" component={PageResetPassword} />
 				<Route path="/cart" component={PageCart} />
 				<Route path="/checkout" component={PageCheckout} />
 			</Switch>

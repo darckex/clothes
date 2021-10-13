@@ -5,25 +5,24 @@ import Image from "../Image/Image"
 import Tags from "../Tags/Tags"
 import "./ProductItem.scss"
 
-const ProductItem = ({
-	id = 0,
-	category,
-	topCategory,
-	image,
-	name,
-	price,
-	colors = []
-}) => {
+const ProductItem = ({ id, genderId, image, name, price, colors }) => {
 	return (
-		<Link to={`/products/${topCategory}/${id}`} className="product-item">
+		<Link to={`/products/${genderId}/${id}`} className="product-item">
 			<Image
 				src={`${server}/media/${image}`}
 				className="cover"
 				aspectRatio="3/4"
 			/>
 			<div className="text fw center marg-top2 lines line2">{name}</div>
-			<div className="text fw-1 center marg-top1">${price} USD</div>
-			<Tags className="content-center marg-top2" tags={colors} />
+			{!!price && (
+				<div className="text fw-1 center marg-top1">${price} USD</div>
+			)}
+			{!!colors && (
+				<Tags
+					className="content-center marg-top2"
+					tags={colors.split(",")}
+				/>
+			)}
 		</Link>
 	)
 }

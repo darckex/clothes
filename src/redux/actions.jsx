@@ -1,25 +1,24 @@
-export const actionTest = (data) => {
+import store from "./store"
+
+export const actionLogin = (data) => {
 	return {
-		type: "test",
-		store: 1,
+		type: "login",
+		store: true,
 		payload: {
-			test: data
+			user: data.user,
+			jwt: data.jwt
 		}
 	}
 }
-export const actionAddCategories = (data) => {
+export const actionResetPassword = (data) => {
+	const { resetPassword = {} } = store.getState()
 	return {
-		type: "addCategories",
+		type: "resetPassword",
 		payload: {
-			categories: data
-		}
-	}
-}
-export const actionAddProducts = (data) => {
-	return {
-		type: "addProducts",
-		payload: {
-			products: data
+			resetPassword: {
+				...resetPassword,
+				...data
+			}
 		}
 	}
 }
