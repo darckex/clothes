@@ -6,6 +6,7 @@ $post = [
 	'password' => get_password('password'),
 	'name' => get_post('name'),
 	'phone' => get_post('phone'),
+	'address' => get_post('address'),
 ];
 
 $q = "SELECT id FROM users WHERE email = '{$post['email']}'";

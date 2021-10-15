@@ -7,12 +7,27 @@ import Logo from "../../assets/images/default/white-logo.svg"
 
 import "./Header.scss"
 import Image from "../Image/Image"
+import store from "../../redux/store"
 
 const Header = ({ user }) => {
 	const [state, setState] = useState({
 		show: 0,
-		user: { id: 0 }
+		cartLength: store.getState().cart?.length || 0
 	})
+
+	useEffect(() => {
+		const unsub = store.subscribe(() => {
+			const { cart = [], type } = store.getState()
+			if (type === "addCart" || type === "removeCart") {
+				setState((state) => ({
+					...state,
+					cartLength: cart.length
+				}))
+			}
+		})
+
+		return unsub
+	}, [])
 
 	const toggleMenu = () => {
 		setState({
@@ -42,7 +57,7 @@ const Header = ({ user }) => {
 						)}
 						{!!user?.id && (
 							<HeaderItem2
-								to="/profile"
+								to="/profile/my-profile"
 								icon="fas fa-user-circle"
 								text={user.name}
 							/>
@@ -50,7 +65,7 @@ const Header = ({ user }) => {
 						<HeaderItem2
 							to="/cart"
 							icon="fas fa-shopping-cart"
-							text="0"
+							text={state.cartLength}
 						/>
 					</div>
 					<div className="show-m" onClick={toggleMenu}>
@@ -58,7 +73,12 @@ const Header = ({ user }) => {
 					</div>
 				</div>
 			</Container>
-			<SideMenu user={user} show={state.show} toggleMenu={toggleMenu} />
+			<SideMenu
+				cartLength={state.cartLength}
+				user={user}
+				show={state.show}
+				toggleMenu={toggleMenu}
+			/>
 		</div>
 	)
 }

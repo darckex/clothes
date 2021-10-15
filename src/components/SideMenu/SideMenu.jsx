@@ -2,7 +2,7 @@ import React from "react"
 import HeaderItem from "../Header/HeaderItem"
 import HeaderItem2 from "../Header/HeaderItem2"
 import "./SideMenu.scss"
-const SideMenu = ({ show = 0, toggleMenu, user }) => {
+const SideMenu = ({ show = 0, toggleMenu, user, cartLength }) => {
 	const handleClick = () => {
 		toggleMenu && toggleMenu()
 	}
@@ -27,7 +27,7 @@ const SideMenu = ({ show = 0, toggleMenu, user }) => {
 					)}
 					{!!user?.id && (
 						<HeaderItem2
-							to="/profile"
+							to="/profile/my-profile"
 							icon="fas fa-user-circle"
 							text={user.name}
 						/>
@@ -35,7 +35,7 @@ const SideMenu = ({ show = 0, toggleMenu, user }) => {
 					<HeaderItem2
 						to="/cart"
 						icon="fas fa-shopping-cart"
-						text="0"
+						text={cartLength}
 					/>
 				</div>
 			</div>

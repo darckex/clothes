@@ -4,7 +4,7 @@ const Radio = forwardRef((props, ref) => {
 	const { label, value, ...attr } = props
 	return (
 		<label className="checkbox-holder flex al-center">
-			<input ref={ref} type="radio" {...attr} />
+			<input ref={ref} type="radio" value={value} {...attr} />
 			{(label || value) && (
 				<div className="label text marg-left1">{label || value}</div>
 			)}

@@ -4,7 +4,7 @@ include './settings/connect.php';
 $email = get_post('email');
 $password = get_password('password');
 
-$q = "SELECT id, name, email, phone
+$q = "SELECT id, name, email, phone, address
 FROM users
 WHERE email = '$email' AND password = '$password'";
 $user = sq_array($q);

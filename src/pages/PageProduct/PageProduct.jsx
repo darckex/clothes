@@ -45,9 +45,11 @@ const PageProduct = () => {
 				/>
 				<div className="flex dir-col gap5">
 					<div className="text size3 fw">{state.name}</div>
-					<div className="text bg-black-1 white pad-x3 pad-y1 self-al-start">
-						$ {state.price}
-					</div>
+					{!!state.price && (
+						<div className="text bg-black-1 white pad-x3 pad-y1 self-al-start">
+							$ {state.price}
+						</div>
+					)}
 					<div className="text black-1">{state.description}</div>
 					<div className="flex grow-1 items-al-end gap2">
 						<Link to={`/products/${category}/${id}/add-cart`}>
@@ -56,7 +58,7 @@ const PageProduct = () => {
 								Add to cart
 							</Button>
 						</Link>
-						<div className="icon size5 far fa-heart red cursor-pointer"></div>
+						{/* <div className="icon size5 far fa-heart red cursor-pointer"></div> */}
 					</div>
 				</div>
 			</div>

@@ -9,20 +9,17 @@ const Quant = (props) => {
 	})
 
 	useEffect(() => {
+		const setVal = Number(value) < min ? min : Number(value)
 		setState((state) => ({
 			...state,
-			value: Number(value) || 0
+			value: setVal
 		}))
 	}, [value])
 
 	const handleChange = (change) => {
 		let value = state.value + change
 		if (value < min) {
-			if (change === -1) {
-				value = 0
-			} else {
-				value = min
-			}
+			value = min
 		}
 		onChange && onChange(value)
 
@@ -30,7 +27,7 @@ const Quant = (props) => {
 	}
 
 	const changeValue = (e) => {
-		const value = Number(e.target.value)
+		const value = Number(e.target.value) || min
 		onChange && onChange(value)
 		setState({ ...state, value })
 	}

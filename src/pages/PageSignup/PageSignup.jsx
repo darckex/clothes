@@ -50,6 +50,11 @@ const PageSignup = () => {
 							type="password"
 							label="Password"
 						/>
+						<WithField
+							name="address"
+							component="input"
+							label="Address"
+						/>
 						<Button className="black-1" type="submit">
 							Sign up
 						</Button>

@@ -1,10 +1,12 @@
 import React from "react"
-import { useHistory } from "react-router"
+import { Route, Switch, useHistory } from "react-router"
 import Container from "../../components/Container/Container"
 import { actionLogin } from "../../redux/actions"
 import store from "../../redux/store"
+import OrdersTab from "./OrdersTab"
 import "./PageProfile.scss"
 import ProfileLinks from "./ProfileLinks"
+import ProfileTab from "./ProfileTab"
 
 const PageProfile = () => {
 	const history = useHistory()
@@ -29,8 +31,13 @@ const PageProfile = () => {
 					</div>
 				</div>
 				<div className="grow-1">
-					<div className="text title-1">My Profile</div>
-					<div className="bord marg-top5">hello there</div>
+					<Switch>
+						<Route
+							path="/profile/my-profile"
+							component={ProfileTab}
+						/>
+						<Route path="/profile/orders" component={OrdersTab} />
+					</Switch>
 				</div>
 			</div>
 		</Container>
