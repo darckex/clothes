@@ -1,8 +1,11 @@
 <?php
 $dbHost = 'localhost';
 $dbName = 'favori';
-$dbusername = 'root';
-$dbpassword = '';
+$dbusername = 'dark';
+$dbpassword = 'dark123*';
+
+// $dbusername = 'root';
+// $dbpassword = '';
 
 $jwt_secret = 'secret_key';
 
