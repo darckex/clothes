@@ -40,6 +40,7 @@ const PageHome = () => {
 				trending: 1
 			}
 		}).then((r) => {
+			if (!r.products?.length) return
 			setState((state) => ({
 				...state,
 				trendingProducts: r.products
@@ -51,6 +52,7 @@ const PageHome = () => {
 				recommended: 1
 			}
 		}).then((r) => {
+			if (!r.products?.length) return
 			setState((state) => ({
 				...state,
 				recommendedProducts: r.products
