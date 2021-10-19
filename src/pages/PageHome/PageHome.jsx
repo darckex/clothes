@@ -3,7 +3,6 @@ import Field from "../../components/Field/Field"
 import Image from "../../components/Image/Image"
 import ProductItem from "../../components/ProductItem/ProductItem"
 import Slider from "../../components/Slider/Slider"
-import CategoryItem from "../../components/CategoryItem/CategoryItem"
 import HomeSection from "./HomeSection"
 import useDimensions from "../../utility/useDimensions"
 import "./PageHome.scss"
@@ -89,14 +88,6 @@ const PageHome = () => {
 					</Link>
 				</div>
 			</HomeSection>
-
-			{/* <HomeSection title="CATEGORIES" subTitle="Looking for clothes">
-				<Slider spaceBetween={20} slidesPerView={state.slidesPerView}>
-					{Object.values(state.categories).map((v, k) => (
-						<CategoryItem key={k} icon={v.icon} text={v.name} />
-					))}
-				</Slider>
-			</HomeSection> */}
 
 			<HomeSection title="TRENDING" subTitle="Must have items">
 				<Slider

@@ -44,7 +44,8 @@ const PageCart = () => {
 			name: values.name,
 			phone: values.phone,
 			address: values.address
-		}).then(() => {
+		}).then((r) => {
+			if (!r.res) return
 			store.dispatch(actionClearCart())
 			history.push("/profile/orders")
 		})

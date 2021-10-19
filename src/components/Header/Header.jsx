@@ -3,11 +3,11 @@ import Container from "../Container/Container"
 import HeaderItem from "./HeaderItem"
 import HeaderItem2 from "./HeaderItem2"
 import SideMenu from "../SideMenu/SideMenu"
-import Logo from "../../assets/images/default/white-logo.svg"
 
 import "./Header.scss"
 import Image from "../Image/Image"
 import store from "../../redux/store"
+import { server } from "../../settings"
 
 const Header = ({ user }) => {
 	const [state, setState] = useState({
@@ -40,7 +40,11 @@ const Header = ({ user }) => {
 		<div className="header bg-black-1">
 			<Container className="pad-y4">
 				<div className="flex space-between items-al-center">
-					<Image src={Logo} height={60} width={"auto"} />
+					<Image
+						src={`${server}/media/logo.jpeg`}
+						height={60}
+						width={"auto"}
+					/>
 					<div className="flex gap2 al-center hide-m">
 						<HeaderItem to="/" text="Home" exact />
 						<HeaderItem to="/products/1" text="Men" />

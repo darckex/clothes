@@ -80,3 +80,15 @@ export const postOrder = async (data) => {
 	})
 	return res.data
 }
+
+export const getOrders = async (data) => {
+	const { user, jwt } = store.getState()
+	const res = await axios.get("/get-orders.php", {
+		params: {
+			user,
+			jwt,
+			...data
+		}
+	})
+	return res.data
+}
