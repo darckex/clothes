@@ -19,24 +19,22 @@ const PageAbout = () => {
 			<div className="text title-1 center">About Us</div>
 			<div className="holder grid gap4 marg-top6">
 				<div className="text center fw-1">
-					Celebrity fans are at the receiving end of the celebrities’
-					popular marketing strategy, as they function primarily as
-					brand purchasers.
+					Favori is an emerging private label garment manufacturing
+					factory, that has been working for small to large fashion
+					brands all over the world. Located in Lebanon, with more
+					than 20 years of work teams experience.
 				</div>
 				<div className="text center fw-1">
-					Mashahir.shop strives to provide celebrities and social
-					media influencers with their fans, a very creative bundle of
-					ideas and concepts that facilitate the communication between
-					both parts by making it easy, and not limited with distances
-					and difficulties.
+					We are dedicated clothing manufacturers mainly targeting
+					wholesale and retails. We deal with different categories of
+					clothing such as women blouses and trousers, shirts for men
+					and women, jackets, jeans, uppers etc., From plain to chic,
+					from casual to formal, we are able to manufacture a
+					varieties of clothes for our clients.
 				</div>
 				<div className="text center fw-1">
-					From gifts, releases, to souvenirs… with just a click, you
-					will have the ability to shop online and have anything
-					delivered to your door in a very much modern and convenient
-					way, that’s is considered as a new experience in the Arab
-					world, bringing your beloved celebrities and influencers
-					closer.
+					Our work is our passion and we love to explore new
+					possibilities of fashion for brands out there.
 				</div>
 			</div>
 			<div
