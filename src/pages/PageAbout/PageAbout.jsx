@@ -2,18 +2,30 @@ import React, { useEffect, useState } from "react"
 import Button from "../../components/Button/Button"
 import Container from "../../components/Container/Container"
 import Field from "../../components/Field/Field"
+import Image from "../../components/Image/Image"
+import { server } from "../../settings"
 import useDimensions from "../../utility/useDimensions"
+import PageImage from "../PageImage/PageImage"
 
 import "./PageAbout.scss"
 const PageAbout = () => {
 	const [state, setState] = useState({
-		flex: "flex"
+		flex: "flex",
+		openImage: ""
 	})
 	const { vw } = useDimensions()
 	useEffect(() => {
 		const flex = vw < 767 ? "grid" : "flex"
 		setState((state) => ({ ...state, flex }))
 	}, [vw])
+
+	const openImage = (image) => {
+		setState((state) => ({
+			...state,
+			openImage: image
+		}))
+	}
+
 	return (
 		<Container className="page-about pad-y10 marg-top6 place-center">
 			<div className="text title-1 center">About Us</div>
@@ -36,7 +48,27 @@ const PageAbout = () => {
 					Our work is our passion and we love to explore new
 					possibilities of fashion for brands out there.
 				</div>
+
+				<div className="grid grid-4 gap3">
+					<Image
+						onClick={() => openImage("about-1.png")}
+						src={`${server}/media/about-1.png`}
+					/>
+					<Image
+						onClick={() => openImage("about-2.png")}
+						src={`${server}/media/about-2.png`}
+					/>
+					<Image
+						onClick={() => openImage("about-3.png")}
+						src={`${server}/media/about-3.png`}
+					/>
+					<Image
+						onClick={() => openImage("about-4.png")}
+						src={`${server}/media/about-4.png`}
+					/>
+				</div>
 			</div>
+
 			<div
 				className={`contact pad-y10 marg-y10 ${state.flex} gap5 al-start space-between w100`}>
 				<div className="grid gap6">
@@ -92,6 +124,13 @@ const PageAbout = () => {
 					<Button className="black-1 small">Submit</Button>
 				</div>
 			</div>
+
+			{!!state.openImage && (
+				<PageImage
+					onClose={() => openImage("")}
+					image={state.openImage}
+				/>
+			)}
 		</Container>
 	)
 }
