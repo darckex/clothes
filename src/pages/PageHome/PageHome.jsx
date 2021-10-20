@@ -98,7 +98,7 @@ const PageHome = () => {
 						<ProductItem
 							key={k}
 							id={v.id}
-							genderId={v.gender_id}
+							gender={v.gender}
 							image={v.image}
 							name={v.name}
 							price={v.price}
@@ -117,7 +117,7 @@ const PageHome = () => {
 						<ProductItem
 							key={k}
 							id={v.id}
-							genderId={v.gender_id}
+							gender={v.gender}
 							image={v.image}
 							name={v.name}
 							price={v.price}

@@ -72,6 +72,9 @@ const PageProducts = () => {
 	useDebounce(
 		async () => {
 			getProducts({
+				filter: {
+					gender: category
+				},
 				seasons: state.filterValues.seasons,
 				categories: state.filterValues.categories,
 				search: state.search
@@ -179,7 +182,7 @@ const PageProducts = () => {
 						<ProductItem
 							key={k}
 							id={v.id}
-							genderId={v.gender_id}
+							gender={v.gender}
 							image={v.image}
 							name={v.name}
 							price={v.price}
