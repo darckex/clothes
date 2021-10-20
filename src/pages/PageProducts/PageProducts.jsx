@@ -50,7 +50,6 @@ const PageProducts = () => {
 			...state,
 			categories: [],
 			products: [],
-			categoryName: category === "2" ? "Women" : "Men",
 			search: ""
 		}))
 
@@ -61,7 +60,6 @@ const PageProducts = () => {
 		async () => {
 			formSub.change("categories", [])
 			getCategories({
-				filter: { parent_id: category },
 				seasons: state.filterValues.seasons
 			}).then((r) => {
 				setState((state) => ({ ...state, categories: r.categories }))
@@ -76,7 +74,6 @@ const PageProducts = () => {
 			getProducts({
 				seasons: state.filterValues.seasons,
 				categories: state.filterValues.categories,
-				gender: category,
 				search: state.search
 			}).then((r) => {
 				setState((state) => ({ ...state, products: r.products }))
@@ -127,7 +124,7 @@ const PageProducts = () => {
 									onChange={form.submit}
 								/>
 
-								<div className="grid gap3 bg-white pad2">
+								{/* <div className="grid gap3 bg-white pad2">
 									<div className="flex content-space-between">
 										<div className="text fw">Seasons</div>
 										<div
@@ -145,7 +142,7 @@ const PageProducts = () => {
 											label={v.name}
 										/>
 									))}
-								</div>
+								</div> */}
 
 								<div className="grid gap3 bg-white pad2">
 									<div className="flex content-space-between">
@@ -158,17 +155,19 @@ const PageProducts = () => {
 											Clear
 										</div>
 									</div>
-									{state.categories
-										.filter((v) => v.count > 0)
-										.map((v, k) => (
-											<WithField
-												name="categories"
-												key={k}
-												component="checkbox"
-												value={v.id}
-												label={v.name}
-											/>
-										))}
+									<div className="grid wrap gap3">
+										{state.categories
+											// .filter((v) => v.count > 0)
+											.map((v, k) => (
+												<WithField
+													name="categories"
+													key={k}
+													component="checkbox"
+													value={v.id}
+													label={v.name}
+												/>
+											))}
+									</div>
 								</div>
 							</form>
 						)

@@ -14,7 +14,7 @@ const ProductItem = ({ id, genderId, image, name, price, colors }) => {
 				aspectRatio="3/4"
 			/>
 			<div className="text fw center marg-top2 lines line2">{name}</div>
-			{!!price && (
+			{!!Number(price) && (
 				<div className="text fw-1 center marg-top1">${price} USD</div>
 			)}
 			{!!colors && (

@@ -21,10 +21,10 @@ if (!empty($seasons)) {
 }
 
 if (!empty($where)) {
-	$where = "AND $where";
+	$where = "WHERE $where";
 }
 
-$q = "SELECT * FROM categories WHERE parent_id IS NOT NULL $where";
+$q = "SELECT * FROM categories $where";
 $categories = sq_array($q);
 
 foreach ($categories as $k => $v) {

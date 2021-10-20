@@ -4,7 +4,6 @@ include './settings/connect.php';
 $filter = get_json('filter');
 $seasons = get_post('seasons');
 $categories = get_post('categories');
-$gender = get_post('gender');
 $search = get_post('search');
 
 $where = "";
@@ -32,12 +31,6 @@ if (!empty($categories)) {
 	$where .= "category_id IN ($categories)";
 }
 
-if (!empty($gender)) {
-	if (!empty($where)) $where = "$where AND ";
-
-	$where .= "category_id IN (SELECT id FROM categories WHERE parent_id = '$gender')";
-}
-
 if (!empty($search)) {
 	if (!empty($where)) $where = "$where AND ";
 
@@ -48,7 +41,7 @@ if ($where != '') {
 	$where = "WHERE $where";
 }
 
-$q = "SELECT *, (SELECT parent_id FROM categories WHERE id = category_id) 'gender_id'
+$q = "SELECT *
 FROM products
 $where";
 $products = sq_array($q);
