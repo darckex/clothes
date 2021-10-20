@@ -160,7 +160,7 @@ const PageProducts = () => {
 									</div>
 									<div className="grid wrap gap3">
 										{state.categories
-											// .filter((v) => v.count > 0)
+											.filter((v) => v.count > 0)
 											.map((v, k) => (
 												<WithField
 													name="categories"
