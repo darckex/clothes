@@ -106,14 +106,17 @@ function report_error()
 	var_dump($backtrace);
 }
 
-function generate_jwt($payload = [])
+function generate_jwt($payload = [], $cms = false)
 {
-	global $jwt_secret;
+	global $jwt_secret, $cms_jwt_secret;
+
+	$secret = $cms ? $cms_jwt_secret : $jwt_secret;
+
 	$header = json_encode(['type' => 'JWT', 'alg', 'HS256']);
 	$payload = json_encode($payload);
 	$base64Header = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($header));
 	$base64Payload = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($payload));
-	$signature = hash_hmac('sha256', $base64Header . "." . $base64Payload, $jwt_secret, true);
+	$signature = hash_hmac('sha256', $base64Header . "." . $base64Payload, $secret, true);
 	$base64Signature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($signature));
 
 	$jwt = $base64Header . "." . $base64Payload . "." . $base64Signature;
@@ -121,21 +124,23 @@ function generate_jwt($payload = [])
 	return $jwt;
 }
 
-function check_jwt($jwt)
+function check_jwt($jwt, $cms = false)
 {
-	global $jwt_secret;
+	global $jwt_secret, $cms_jwt_secret;
+
+	$secret = $cms ? $cms_jwt_secret : $jwt_secret;
 
 	$arr = explode('.', $jwt);
 	$base64Header = $arr[0];
 	$base64Payload = $arr[1];
-	$signature = hash_hmac('sha256', $base64Header . "." . $base64Payload, $jwt_secret, true);
+	$signature = hash_hmac('sha256', $base64Header . "." . $base64Payload, $secret, true);
 	$base64Signature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($signature));
 	$jwt1 = $base64Header . "." . $base64Payload . "." . $base64Signature;
 
 	return $jwt1 === $jwt;
 }
 
-function check_login($die = true)
+function check_login($die = true, $cms = false)
 {
 	if (gettype(get_post('user')) === 'array') {
 		$user = get_post('user');
@@ -152,7 +157,7 @@ function check_login($die = true)
 	}
 
 	$jwt = get_post('jwt');
-	$jwt1 = generate_jwt($user['id']);
+	$jwt1 = generate_jwt($user['id'], $cms);
 
 	if ($jwt1 !== $jwt) {
 		if ($die) {

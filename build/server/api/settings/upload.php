@@ -1,6 +1,6 @@
 <?php
 // uploaded file to server and returns an array of information
-function upload_file($inputName, $x = [])
+function upload_file($inputName, $cms = false, $x = [])
 {
 	global $upload_directory;
 
@@ -8,6 +8,10 @@ function upload_file($inputName, $x = [])
 	$files = $_FILES[$inputName];
 	if (empty($files['name']) or empty($files['name'][0])) {
 		return false;
+	}
+
+	if ($cms) {
+		$upload_directory = "../$upload_directory";
 	}
 
 	$y = [

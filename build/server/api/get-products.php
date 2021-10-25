@@ -41,9 +41,10 @@ if ($where != '') {
 	$where = "WHERE $where";
 }
 
-$q = "SELECT *
-FROM products
+$q = "SELECT p.*, c.name 'category'
+FROM products p
+LEFT JOIN categories c ON p.category_id = c.id
 $where";
 $products = sq_array($q);
 
-ret_json(['products' => $products]);
+ret_json(['res' => 1, 'products' => $products]);

@@ -24,7 +24,10 @@ if (!empty($where)) {
 	$where = "WHERE $where";
 }
 
-$q = "SELECT * FROM categories $where";
+$q = "SELECT *
+FROM categories
+$where
+ORDER BY name";
 $categories = sq_array($q);
 
 foreach ($categories as $k => $v) {
@@ -36,4 +39,4 @@ foreach ($categories as $k => $v) {
 	$categories[$k]['count'] = $count;
 }
 
-ret_json(['categories' => $categories]);
+ret_json(['res' => 1, 'categories' => $categories]);

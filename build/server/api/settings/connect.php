@@ -24,4 +24,3 @@ mysqli_query($db, "SET time_zone='$tz';");
 include 'upload.php';
 include 'dbfunc.php';
 include 'queries.php';
-include 'appfunc.php';
