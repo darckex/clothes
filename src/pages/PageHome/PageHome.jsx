@@ -9,10 +9,13 @@ import "./PageHome.scss"
 import { tempData } from "../../temp/tempData"
 import { server } from "../../settings"
 import GrayImage from "../../components/GrayImage/GrayImage"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import { getProducts } from "../../axios/axios"
+import { Form } from "react-final-form"
+import WithField from "../../components/Field/WithField"
 
 const PageHome = () => {
+	const history = useHistory()
 	const { vw } = useDimensions()
 
 	const [state, setState] = useState({
@@ -59,6 +62,10 @@ const PageHome = () => {
 		})
 	}, [])
 
+	const handleSearch = (values) => {
+		history.push("/")
+	}
+
 	return (
 		<div className="page-home">
 			<div className="place-center banner">
@@ -70,7 +77,25 @@ const PageHome = () => {
 				/>
 				<div className="holder pad4 place-center gap2">
 					<div className="welcome text center">Welcome</div>
-					<Field component="input" placeholder="Search..." />
+					<Form onSubmit={handleSearch}>
+						{({ handleSubmit }) => (
+							<form onSubmit={handleSubmit} className="flex">
+								<WithField
+									name="search"
+									className="search"
+									component="input"
+									placeholder="Search..."
+								/>
+								<WithField
+									name="gender"
+									className="gender"
+									component="select">
+									<option value="1">Men</option>
+									<option value="2">Women</option>
+								</WithField>
+							</form>
+						)}
+					</Form>
 				</div>
 			</div>
 			<div className="bg-tan pad2"></div>

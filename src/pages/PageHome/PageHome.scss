@@ -12,10 +12,15 @@
 		.welcome {
 			font-size: 5.5rem;
 		}
-		.field {
+		.search {
 			width: 300px;
-			.input-holder .icon-holder {
-				background-color: transparent;
+			.input-holder {
+				.icon-holder {
+					background-color: transparent;
+				}
+				.input {
+					padding-bottom: 12px;
+				}
 			}
 		}
 	}

@@ -79,3 +79,17 @@ function delete_id($table, $id)
 {
 	delete_query($table, "id = '$id'");
 }
+
+// get where filter for queries
+function get_filter($filter)
+{
+	$where = "";
+	if (!empty($filter)) {
+		$array = [];
+		foreach ($filter as $k => $v) {
+			$array[] = "$k = '$v'";
+		}
+		$where .= implode(' AND ', $array);
+	}
+	return $where;
+}
