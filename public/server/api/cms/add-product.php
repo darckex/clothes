@@ -8,6 +8,9 @@ $post = get_json('json');
 $old_image = get_post('old_image');
 $image = upload_file('image', true);
 
+$post['trending'] = empty($post['trending']) ? 0 : 1;
+$post['recommended'] = empty($post['recommended']) ? 0 : 1;
+
 
 if (!empty($image)) {
 	$post['image'] = $image['save_name'];
