@@ -62,8 +62,9 @@ const PageHome = () => {
 		})
 	}, [])
 
-	const handleSearch = (values) => {
-		history.push("/")
+	const handleSearch = ({ search, gender }) => {
+		console.log(`gender`, gender)
+		history.push(`/products/${gender}`, { search })
 	}
 
 	return (
@@ -77,7 +78,9 @@ const PageHome = () => {
 				/>
 				<div className="holder pad4 place-center gap2">
 					<div className="welcome text center">Welcome</div>
-					<Form onSubmit={handleSearch}>
+					<Form
+						onSubmit={handleSearch}
+						initialValues={{ gender: "1" }}>
 						{({ handleSubmit }) => (
 							<form onSubmit={handleSubmit} className="flex">
 								<WithField

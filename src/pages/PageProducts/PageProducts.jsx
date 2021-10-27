@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Form, FormSpy } from "react-final-form"
-import { useParams } from "react-router"
+import { useLocation, useParams } from "react-router"
 import { getCategories, getProducts, getSeasons } from "../../axios/axios"
 import Container from "../../components/Container/Container"
 import Field from "../../components/Field/Field"
@@ -12,6 +12,7 @@ import "./PageProducts.scss"
 
 const PageProducts = () => {
 	const { category } = useParams()
+	const location = useLocation()
 
 	const [state, setState] = useState({
 		categoryName: "",
@@ -21,7 +22,7 @@ const PageProducts = () => {
 		products: [],
 		seasons: [],
 		filterValues: {},
-		search: ""
+		search: location.state?.search || ""
 	})
 
 	const { vw } = useDimensions()
@@ -50,11 +51,11 @@ const PageProducts = () => {
 			...state,
 			categories: [],
 			products: [],
-			search: ""
+			search: location.state?.search || ""
 		}))
 
 		typeof formSub.reset === "function" && formSub.reset()
-	}, [category])
+	}, [category, location.state?.search || ""])
 
 	useDebounce(
 		async () => {
@@ -80,6 +81,7 @@ const PageProducts = () => {
 				categories: state.filterValues.categories,
 				search: state.search
 			}).then((r) => {
+				if (!r.res) return
 				setState((state) => ({ ...state, products: r.products }))
 			})
 		},

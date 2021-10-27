@@ -14,10 +14,16 @@ const Footer = () => {
 				</a>
 			</div>
 			<div className="flex gap2">
-				<a href="#" className="icon size3 blue fab fa-facebook"></a>
-				<a href="#" className="icon size3 blue fab fa-twitter"></a>
-				<a href="#" className="icon size3 blue fab fa-instagram"></a>
-				<a href="#" className="icon size3 blue fab fa-linkedin"></a>
+				<a
+					href="https://www.facebook.com/favorilb/"
+					target="_blank"
+					rel="norel"
+					className="icon size3 blue fab fa-facebook"></a>
+				<a
+					href="https://www.instagram.com/favorilb/"
+					target="_blank"
+					rel="norel"
+					className="icon size3 blue fab fa-instagram"></a>
 			</div>
 		</div>
 	)
