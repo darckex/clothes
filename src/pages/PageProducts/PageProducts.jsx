@@ -60,7 +60,8 @@ const PageProducts = () => {
 		async () => {
 			formSub.change("categories", [])
 			getCategories({
-				seasons: state.filterValues.seasons
+				seasons: state.filterValues.seasons,
+				gender: category
 			}).then((r) => {
 				setState((state) => ({ ...state, categories: r.categories }))
 			})
