@@ -3,6 +3,7 @@ include './settings/connect.php';
 
 $filter = get_json('filter');
 $seasons = get_post('seasons');
+$gender = get_post('gender');
 
 $where = "";
 if (!empty($filter)) {
@@ -20,6 +21,11 @@ if (!empty($seasons)) {
 	$where_seasons = "AND season_id IN ($seasons)";
 }
 
+$where_gender = "";
+if (!empty($gender)) {
+	$where_gender = "AND gender = '$gender'";
+}
+
 if (!empty($where)) {
 	$where = "WHERE $where";
 }
@@ -33,7 +39,7 @@ $categories = sq_array($q);
 foreach ($categories as $k => $v) {
 	$q = "SELECT COUNT(id) 'count'
 	FROM products
-	WHERE category_id = '{$v['id']}' $where_seasons ";
+	WHERE category_id = '{$v['id']}' $where_seasons $where_gender";
 	$count = sq_array($q)[0]['count'];
 
 	$categories[$k]['count'] = $count;
