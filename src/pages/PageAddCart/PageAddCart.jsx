@@ -31,8 +31,8 @@ const PageAddCart = () => {
 			sizes: [],
 			minOrder: 0
 		}))
-		getProducts({ filter: { id } }).then((r) => {
-			if (!r.products.length) return
+		getProducts({ filter: { ["p.id"]: id } }).then((r) => {
+			if (!r.res || !r.products.length) return
 			const product = r.products[0]
 			setState((state) => ({
 				...state,
@@ -64,8 +64,8 @@ const PageAddCart = () => {
 	const handleValidate = (values) => {
 		const errors = {}
 
-		if (!values.color) errors.color = "Select color"
-		if (!values.size) errors.size = "Select size"
+		if (!values.color && state.colors.length) errors.color = "Select color"
+		if (!values.size && state.sizes.length) errors.size = "Select size"
 		return errors
 	}
 
@@ -88,7 +88,7 @@ const PageAddCart = () => {
 							{submitFailed && (
 								<div className="text error">{errors.color}</div>
 							)}
-							<div className="flex wrap gap2">
+							{!!state.colors.length && <div className="flex wrap gap2">
 								{state.colors.map((v, k) => (
 									<WithField
 										key={k}
@@ -97,7 +97,7 @@ const PageAddCart = () => {
 										value={v}
 									/>
 								))}
-							</div>
+							</div>}
 						</div>
 
 						<div className="pad2 bg-gray-2 grid gap2">
