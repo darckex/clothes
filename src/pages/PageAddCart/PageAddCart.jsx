@@ -64,8 +64,9 @@ const PageAddCart = () => {
 	const handleValidate = (values) => {
 		const errors = {}
 
-		if (!values.color && state.colors.length) errors.color = "Select color"
-		if (!values.size && state.sizes.length) errors.size = "Select size"
+		if (!values.color && state.colors[0] !== "")
+			errors.color = "Select color"
+		if (!values.size && state.sizes[0] !== "") errors.size = "Select size"
 		return errors
 	}
 
@@ -88,16 +89,18 @@ const PageAddCart = () => {
 							{submitFailed && (
 								<div className="text error">{errors.color}</div>
 							)}
-							{!!state.colors.length && <div className="flex wrap gap2">
-								{state.colors.map((v, k) => (
-									<WithField
-										key={k}
-										name="color"
-										component="radio"
-										value={v}
-									/>
-								))}
-							</div>}
+							{!!state.colors.length && (
+								<div className="flex wrap gap2">
+									{state.colors.map((v, k) => (
+										<WithField
+											key={k}
+											name="color"
+											component="radio"
+											value={v}
+										/>
+									))}
+								</div>
+							)}
 						</div>
 
 						<div className="pad2 bg-gray-2 grid gap2">
