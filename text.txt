@@ -1,14 +1,1 @@
-artists to clothes category
-build cloths
-category {
-	show products
-}
-ads
-
-cms {
-	orders
-	categories
-	clothes
-}
-
-about tab
+Notification of order for cms

@@ -34,7 +34,7 @@ if (!empty($categories)) {
 if (!empty($search)) {
 	if (!empty($where)) $where = "$where AND ";
 
-	$where .= "name LIKE '%$search%'";
+	$where .= "p.name LIKE '%$search%'";
 }
 
 if ($where != '') {

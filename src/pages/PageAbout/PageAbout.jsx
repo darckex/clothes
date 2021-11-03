@@ -80,7 +80,7 @@ const PageAbout = () => {
 					<div className="grid gap1">
 						<div className="text center fw">Call us at</div>
 						<div className="text center fw-1">
-							+961 81 206 647
+							+961 70 605 067
 							<br />
 							+961 76 760 000
 							<br />
@@ -88,7 +88,9 @@ const PageAbout = () => {
 							<div className="text fw center">
 								Or send us an email to
 							</div>
-							info@favorilb.com
+							<a href="mailto:favorifashion@outlook.com">
+								favorifashion@outlook.com
+							</a>
 							<br />
 						</div>
 					</div>
@@ -96,6 +98,10 @@ const PageAbout = () => {
 						<div className="text fw center">Our Office</div>
 						<div className="text fw-1 center">
 							Salim salam, Facing Bank Audi, Beirut, Lebanon.
+						</div>
+						<div className="text fw center">Headquarter</div>
+						<div className="text fw-1 center">
+							Mar Elias, Youssef Najjar Str., Medco Center.
 						</div>
 					</div>
 				</div>
