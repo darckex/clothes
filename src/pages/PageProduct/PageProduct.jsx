@@ -6,17 +6,16 @@ import Button from "../../components/Button/Button"
 import Container from "../../components/Container/Container"
 import Image from "../../components/Image/Image"
 import { server } from "../../settings"
-import { tempData } from "../../temp/tempData"
 import "./PageProduct.scss"
 
 const PageProduct = () => {
 	const { id, category } = useParams()
 
 	const [state, setState] = useState({
-		image: tempData.products[id].image,
-		name: tempData.products[id].name,
-		description: tempData.products[id].description,
-		price: tempData.products[id].price
+		image: '',
+		name: '',
+		description: '',
+		price: ''
 	})
 
 	useEffect(() => {
@@ -45,7 +44,7 @@ const PageProduct = () => {
 				/>
 				<div className="flex dir-col gap5">
 					<div className="text size3 fw">{state.name}</div>
-					{!!state.price && (
+					{(!!state.price || state.price === '0.00') && (
 						<div className="text bg-black-1 white pad-x3 pad-y1 self-al-start">
 							$ {state.price}
 						</div>
