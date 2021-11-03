@@ -44,7 +44,7 @@ const PageProduct = () => {
 				/>
 				<div className="flex dir-col gap5">
 					<div className="text size3 fw">{state.name}</div>
-					{(!!state.price || state.price !== "0.00") && (
+					{!!state.price && state.price !== "0.00" && (
 						<div className="text bg-black-1 white pad-x3 pad-y1 self-al-start">
 							$ {state.price}
 						</div>
