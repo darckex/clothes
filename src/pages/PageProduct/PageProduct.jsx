@@ -19,7 +19,7 @@ const PageProduct = () => {
 	})
 
 	useEffect(() => {
-		getProducts({ filter: { id } }).then((r) => {
+		getProducts({ filter: { ["p.id"]: id } }).then((r) => {
 			if (!r.products.length) return
 			const product = r.products[0]
 
