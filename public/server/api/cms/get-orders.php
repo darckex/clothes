@@ -18,10 +18,11 @@ if ($where != '') {
 	$where = "WHERE $where";
 }
 
-$q = "SELECT uo.id, uo.name, uo.phone, uo.address, uo.products, DATE_FORMAT(uo.indate, '%Y-%m-%d') 'indate',
+$q = "SELECT uo.id, uo.name, uo.phone, uo.address, uo.products, DATE_FORMAT(uo.indate, '%Y-%m-%d %h:%i %p') 'indate',
 u.email
 FROM user_orders uo
 LEFT JOIN users u ON u.id = uo.user_id
+ORDER BY id DESC
 $where";
 $orders = sq_array($q);
 

@@ -2,6 +2,6 @@ x- on register login
 - Notification of order for cms
 - cms {
 	x- order add email
-	- fix color button
+	x- fix color button
 	- order history
 }
