@@ -1,1 +1,7 @@
-Notification of order for cms
+x- on register login
+- Notification of order for cms
+- cms {
+	x- order add email
+	- fix color button
+	- order history
+}

@@ -17,9 +17,11 @@ if (!empty($user)) {
 
 insert_array('users', $post);
 
-$jwt = generate_jwt(sq_id());
-unset($post['password']);
+$id = sq_id();
+$q = "SELECT id, name, email, phone, address
+FROM users
+WHERE id = '$id'";
+$user = sq_array($q)[0];
+$jwt = generate_jwt($user['id']);
 
-$post['id'] = sq_id();
-
-ret_json(['res' => 1, 'message' => 'account created', 'user' => $post, 'jwt' => $jwt]);
+ret_json(['res' => 1, 'message' => 'account created', 'user' => $user, 'jwt' => $jwt]);
