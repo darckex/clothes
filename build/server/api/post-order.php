@@ -30,4 +30,6 @@ foreach ($cart as $k => $v) {
 	insert_array('order_products', $post);
 }
 
+send_notification("New Order", ['id' => $order_id]);
+
 ret_json(['res' => 1, 'message' => 'Order Added']);

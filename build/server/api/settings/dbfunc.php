@@ -248,82 +248,39 @@ function date_difference($date_1, $date_2, $format = '%a')
 	return $interval->format($format);
 }
 
-
-// send firebase cloud message to tokens
-function send_notification($x = [], $tokens = [])
+// Send onesignal notification
+function send_notification($msg, $data = [])
 {
-	global $firebase_api;
+	$content = array(
+		"en" => $msg
+	);
 
-	$y = [
-		'title' => '',
-		'body' => '',
-	];
-	$y = array_replace($y, $x);
+	$fields = array(
+		'app_id' => "502bb19f-3649-436a-bd1f-5de49d71a61b",
+		'included_segments' => array('All'),
+		'data' => $data,
+		'contents' => $content
+	);
 
-	if (empty($tokens) and empty($y['topic'])) return;
+	$fields = json_encode($fields);
 
-	$fields = [
-		'notification'	=> [
-			'title' => $y['title'],
-			'body' => $y['body'],
-		],
-		'android' => ['priority' => 'high'],
-	];
-
-	if (!empty($y['data'])) {
-		$field['data'] = $y['data'];
-	}
-
-	if (!empty($y['topic'])) {
-		$fields['to'] = "/topics/{$y['topic']}";
-	} else {
-		$fields['registration_ids'] = $tokens;
-	}
-
-	$headers = [
-		'Authorization: key=' . $firebase_api,
-		'Content-Type: application/json'
-	];
 
 	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
-	curl_setopt($ch, CURLOPT_POST, true);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
-	$result = curl_exec($ch);
+	curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+		'Content-Type: application/json; charset=utf-8',
+		'Authorization: Basic NTRkZTkwZDEtYmJlNS00ZGQ4LWI2OTQtOWJjYjBjZTdmYjgy'
+	));
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+	curl_setopt($ch, CURLOPT_HEADER, FALSE);
+	curl_setopt($ch, CURLOPT_POST, TRUE);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+
+	$response = curl_exec($ch);
 	curl_close($ch);
 
-
-	return $result;
-}
-
-// firebase subscribe to topic
-function subscribe_topic($topic, $tokens)
-{
-	global $firebase_api;
-
-	if (empty($topic) or empty($tokens)) return false;
-
-	$fields = [
-		"to" => "/topics/$topic", "registration_tokens" => $tokens
-	];
-	$headers = ['Content-Type:application/json', "Authorization:key=$firebase_api"];
-
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-	curl_setopt($ch, CURLOPT_URL, 'https://iid.googleapis.com/iid/v1:batchAdd');
-	curl_setopt($ch, CURLOPT_VERBOSE, 1);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-	curl_setopt($ch, CURLOPT_TIMEOUT, 60);
-	curl_setopt($ch, CURLOPT_POST, True);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
-
-	$res = curl_exec($ch);
-	return $res;
+	return $response;
 }
 
 function crypto_rand_secure($min, $max)
