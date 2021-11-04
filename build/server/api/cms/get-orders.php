@@ -22,8 +22,8 @@ $q = "SELECT uo.id, uo.name, uo.phone, uo.address, uo.products, DATE_FORMAT(uo.i
 u.email
 FROM user_orders uo
 LEFT JOIN users u ON u.id = uo.user_id
-ORDER BY id DESC
-$where";
+$where
+ORDER BY id DESC";
 $orders = sq_array($q);
 
 ret_json(['res' => 1, 'orders' => $orders]);
